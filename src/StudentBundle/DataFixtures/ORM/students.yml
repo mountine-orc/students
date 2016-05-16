@@ -1,0 +1,4 @@
+StudentBundle\Entity\Student :
+    student_{1..25000}:
+        name: <firstName()> <lastName()>
+        description: <text(500)>

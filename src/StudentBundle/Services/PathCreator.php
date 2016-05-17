@@ -23,10 +23,10 @@ class PathCreator
 
     /**
      * Update path based on Student's name
+     * @param int $batchSize
      */
-    function updatePath()
+    function updatePath($batchSize = 20)
     {
-        $batchSize = 20;
         $i = 0;
         $q = $this->em->createQuery('select s from StudentBundle\Entity\Student s');
         $iterableResult = $q->iterate();

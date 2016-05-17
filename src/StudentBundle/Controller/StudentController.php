@@ -38,6 +38,7 @@ class StudentController extends Controller
 
         //set response as public for enable caching
         $response->setPublic();
+        $response->setMaxAge(15*60); //15 min.
 
         return $response;
     }

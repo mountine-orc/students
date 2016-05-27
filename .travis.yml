@@ -17,6 +17,9 @@ script:
   - phpunit
 
 after_success:
+  - pwd
+  - cd vendor/bin
+  - ls -l
   - phpcs --standard=psr2 src
   - ./bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
   - ./bin/phpcpd src

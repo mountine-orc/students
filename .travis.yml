@@ -1,0 +1,22 @@
+language: php
+php:
+  - 7
+
+install:
+  - composer self-update
+  - composer install
+
+before_script:
+  - php app/console doctrine:database:drop --force
+  - php bin/console doctrine:database:create
+  - php bin/console doctrine:schema:create
+  - php bin/console hautelook_alice:doctrine:fixtures:load --no-debug -n
+  - php bin/console students:generate:paths
+
+script:
+  - phpunit
+
+after_success:
+  - ./bin/phpcs --standard=psr2 src
+  - ./bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+  - ./bin/phpcpd src

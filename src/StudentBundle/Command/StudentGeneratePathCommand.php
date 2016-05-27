@@ -39,5 +39,4 @@ class StudentGeneratePathCommand extends ContainerAwareCommand
         $output->writeln('Command time: ' . round(microtime(true) - $startTime, 3) . " s.");
         $output->writeln('Memory: ' . round(memory_get_usage(true) / 1000000, 3) . " Mb.");
     }
-
 }

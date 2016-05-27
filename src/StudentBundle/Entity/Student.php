@@ -125,4 +125,3 @@ class Student
         return $this->path;
     }
 }
-

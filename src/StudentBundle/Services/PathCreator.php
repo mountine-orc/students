@@ -1,5 +1,6 @@
 <?php
 namespace StudentBundle\Services;
+
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -13,7 +14,7 @@ class PathCreator
      * @param EntityManager $em
      *
      */
-    function __construct(EntityManager $em)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
         $this->repository = $em->getRepository("StudentBundle:Student");
@@ -25,7 +26,7 @@ class PathCreator
      * Update path based on Student's name
      * @param int $batchSize
      */
-    function updatePath($batchSize = 20)
+    public function updatePath($batchSize = 20)
     {
         $i = 0;
         $q = $this->em->createQuery('select s from StudentBundle\Entity\Student s');
@@ -48,9 +49,9 @@ class PathCreator
      * @param $name
      * @return string
      */
-    private function _generatePath($name)
+    private function generatePath($name)
     {
-        if (array_key_exists($name, $this->studentArray)){
+        if (array_key_exists($name, $this->studentArray)) {
             $this->studentArray[$name]++;
             $path = str_replace([' ', "'"], "_", strtolower($name)).'_'.$this->studentArray[$name];
         } else {

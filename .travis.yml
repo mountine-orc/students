@@ -11,7 +11,7 @@ before_script:
   - php bin/console doctrine:database:create
   - php bin/console doctrine:schema:create
   - php bin/console hautelook_alice:doctrine:fixtures:load --no-debug -n
-  - php bin/console students:generate:paths
+  - php bin/console student:generate:path
 
 script:
   - phpunit

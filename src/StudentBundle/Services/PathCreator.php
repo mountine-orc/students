@@ -34,7 +34,7 @@ class PathCreator
         
         foreach ($iterableResult as $row) {
             $student = $row[0];
-            $path = $this->_generatePath($student->getName());
+            $path = $this->generatePath($student->getName());
             $student->setPath($path);
             if (($i % $batchSize) === 0) {
                 $this->em->flush(); // Executes all updates.

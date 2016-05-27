@@ -17,6 +17,6 @@ script:
   - phpunit
 
 after_success:
-  - php scripts/phpcs --standard=psr2 src
+  - php ./vendor/squizlabs/php_codesniffer/phpcs --standard=psr2 src
   - ./bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
   - ./bin/phpcpd src

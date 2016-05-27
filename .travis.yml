@@ -7,16 +7,17 @@ install:
   - composer install
 
 before_script:
-  - php app/console doctrine:database:drop --force
+  - php bin/console doctrine:database:drop --force
   - php bin/console doctrine:database:create
   - php bin/console doctrine:schema:create
   - php bin/console hautelook_alice:doctrine:fixtures:load --no-debug -n
-  - php bin/console students:generate:paths
+  - php bin/console student:generate:path
 
 script:
   - phpunit
+  - ./vendor/bin/phpcpd src
 
 after_success:
-  - ./bin/phpcs --standard=psr2 src
-  - ./bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
-  - ./bin/phpcpd src
+  - vendor/bin/phpcs --standard=psr2 src
+  - vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+

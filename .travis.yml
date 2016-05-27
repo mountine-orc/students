@@ -16,8 +16,8 @@ before_script:
 script:
   - phpunit
   - ./vendor/bin/phpcpd src
+  - vendor/bin/phpcs --standard=psr2 src
 
 after_success:
-  - vendor/bin/phpcs --standard=psr2 src
   - vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
 

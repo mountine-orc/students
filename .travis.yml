@@ -20,6 +20,6 @@ after_success:
   - pwd
   - cd vendor/bin
   - ls -l
-  - phpcs --standard=psr2 src
-  - ./bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
-  - ./bin/phpcpd src
+  - vendor/bin/phpcs --standard=psr2 src
+  - php vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+  - ./vendor/bin/phpcpd src
